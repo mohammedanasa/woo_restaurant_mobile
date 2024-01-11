@@ -6,7 +6,8 @@ part of 'line_item.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-LineItem _$LineItemFromJson(Map<String, dynamic> json) => LineItem(
+_$LineItemImpl _$$LineItemImplFromJson(Map<String, dynamic> json) =>
+    _$LineItemImpl(
       id: json['id'] as int?,
       name: json['name'] as String?,
       productId: json['product_id'] as int?,
@@ -29,7 +30,8 @@ LineItem _$LineItemFromJson(Map<String, dynamic> json) => LineItem(
       parentName: json['parent_name'],
     );
 
-Map<String, dynamic> _$LineItemToJson(LineItem instance) => <String, dynamic>{
+Map<String, dynamic> _$$LineItemImplToJson(_$LineItemImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'product_id': instance.productId,

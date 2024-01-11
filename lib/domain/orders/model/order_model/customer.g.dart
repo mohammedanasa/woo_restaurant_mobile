@@ -6,10 +6,12 @@ part of 'customer.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Customer _$CustomerFromJson(Map<String, dynamic> json) => Customer(
+_$CustomerImpl _$$CustomerImplFromJson(Map<String, dynamic> json) =>
+    _$CustomerImpl(
       href: json['href'] as String?,
     );
 
-Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{
+Map<String, dynamic> _$$CustomerImplToJson(_$CustomerImpl instance) =>
+    <String, dynamic>{
       'href': instance.href,
     };

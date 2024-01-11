@@ -6,7 +6,8 @@ part of 'shipping.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Shipping _$ShippingFromJson(Map<String, dynamic> json) => Shipping(
+_$ShippingImpl _$$ShippingImplFromJson(Map<String, dynamic> json) =>
+    _$ShippingImpl(
       firstName: json['first_name'] as String?,
       lastName: json['last_name'] as String?,
       company: json['company'] as String?,
@@ -19,7 +20,8 @@ Shipping _$ShippingFromJson(Map<String, dynamic> json) => Shipping(
       phone: json['phone'] as String?,
     );
 
-Map<String, dynamic> _$ShippingToJson(Shipping instance) => <String, dynamic>{
+Map<String, dynamic> _$$ShippingImplToJson(_$ShippingImpl instance) =>
+    <String, dynamic>{
       'first_name': instance.firstName,
       'last_name': instance.lastName,
       'company': instance.company,

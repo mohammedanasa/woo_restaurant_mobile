@@ -1,16 +1,14 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'customer.freezed.dart';
 part 'customer.g.dart';
 
-@JsonSerializable()
-class Customer {
-  String? href;
+@freezed
+class Customer with _$Customer {
+  factory Customer({
+    String? href,
+  }) = _Customer;
 
-  Customer({this.href});
-
-  factory Customer.fromJson(Map<String, dynamic> json) {
-    return _$CustomerFromJson(json);
-  }
-
-  Map<String, dynamic> toJson() => _$CustomerToJson(this);
+  factory Customer.fromJson(Map<String, dynamic> json) =>
+      _$CustomerFromJson(json);
 }

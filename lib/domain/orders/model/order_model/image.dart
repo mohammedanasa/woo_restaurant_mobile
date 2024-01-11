@@ -1,15 +1,14 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'image.freezed.dart';
 part 'image.g.dart';
 
-@JsonSerializable()
-class Image {
-  String? id;
-  String? src;
-
-  Image({this.id, this.src});
+@freezed
+class Image with _$Image {
+  factory Image({
+    String? id,
+    String? src,
+  }) = _Image;
 
   factory Image.fromJson(Map<String, dynamic> json) => _$ImageFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ImageToJson(this);
 }

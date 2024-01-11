@@ -6,7 +6,8 @@ part of 'billing.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Billing _$BillingFromJson(Map<String, dynamic> json) => Billing(
+_$BillingImpl _$$BillingImplFromJson(Map<String, dynamic> json) =>
+    _$BillingImpl(
       firstName: json['first_name'] as String?,
       lastName: json['last_name'] as String?,
       company: json['company'] as String?,
@@ -20,7 +21,8 @@ Billing _$BillingFromJson(Map<String, dynamic> json) => Billing(
       phone: json['phone'] as String?,
     );
 
-Map<String, dynamic> _$BillingToJson(Billing instance) => <String, dynamic>{
+Map<String, dynamic> _$$BillingImplToJson(_$BillingImpl instance) =>
+    <String, dynamic>{
       'first_name': instance.firstName,
       'last_name': instance.lastName,
       'company': instance.company,
