@@ -12,11 +12,13 @@ import 'package:woo_restaurant/domain/products/model/product_model/product_model
 @LazySingleton(as: IProductsRepo)
 class ProductsRepository implements IProductsRepo {
   @override
-  Future<Either<MainFailure, List<ProductModel>>> getProductsList() async {
+  Future<Either<MainFailure, List<ProductModel>>> getProductsList(
+      int? categoryId) async {
     // TODO: implement getProductsList
     try {
-      final Response response =
-          await Dio(BaseOptions()).get(ApiEndpoints.productsUrl);
+      final Response response = await Dio(BaseOptions()).get(
+          ApiEndpoints.productsUrl,
+          queryParameters: {'categeory': categoryId});
       //log(response.data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         final productsList = (response.data as List).map((e) {

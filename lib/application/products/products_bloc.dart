@@ -24,7 +24,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
 
       //
       final Either<MainFailure, List<ProductModel>> productsOptions =
-          await _productsRepo.getProductsList();
+          await _productsRepo.getProductsList(event.categoryId);
       //log(productsOptions.toString());
       emit(productsOptions.fold(
         (failure) => state.copyWith(

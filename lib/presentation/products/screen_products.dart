@@ -16,8 +16,6 @@ class ScreenProductList extends StatelessWidget {
   Widget build(BuildContext context) {
     BlocProvider.of<CategoriesBloc>(context)
         .add(const CategoriesEvent.getCategoryList());
-    BlocProvider.of<ProductsBloc>(context)
-        .add(const ProductsEvent.getProductsList());
 
     return Scaffold(
       appBar: AppBar(
@@ -27,27 +25,30 @@ class ScreenProductList extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              height: 40,
-              child: BlocBuilder<CategoriesBloc, CategoriesState>(
-                builder: (context, state) {
-                  //print(state!.products);
-                  final categories = state.categories;
-                  final count = state.categories!.length;
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: 40,
+                child: BlocBuilder<CategoriesBloc, CategoriesState>(
+                  builder: (context, state) {
+                    //print(state!.products);
+                    final categories = state.categories;
+                    final count = state.categories!.length;
 
-                  return state.isLoading
-                      ? const CircularProgressIndicator()
-                      // : Text(products.length.toString());
-                      : ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: count,
-                          itemBuilder: (context, index) {
-                            final category = categories![index];
-                            //print(product.name);
-                            return _buildCategoryTabs(category);
-                          },
-                        );
-                },
+                    return state.isLoading
+                        ? const CircularProgressIndicator()
+                        // : Text(products.length.toString());
+                        : ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: count,
+                            itemBuilder: (context, index) {
+                              final category = categories![index];
+                              //print(product.name);
+                              return _buildCategoryTabs(category, context);
+                            },
+                          );
+                  },
+                ),
               ),
             ),
             Expanded(
@@ -58,7 +59,7 @@ class ScreenProductList extends StatelessWidget {
                   final count = state.products!.length;
 
                   return state.isLoading
-                      ? const CircularProgressIndicator()
+                      ? Center(child: const CircularProgressIndicator())
                       // : Text(products.length.toString());
                       : ListView.builder(
                           scrollDirection: Axis.vertical,
@@ -79,11 +80,17 @@ class ScreenProductList extends StatelessWidget {
     );
   }
 
-  Widget _buildCategoryTabs(CategoryModel category) {
+  Widget _buildCategoryTabs(CategoryModel category, BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(1.0),
-      child: Chip(label: Text(category.name.toString())),
-    );
+        padding: const EdgeInsets.all(5.0),
+        child: ElevatedButton(
+            child: Text(category.name.toString()),
+            onPressed: () {
+              int? catid = category.id;
+
+              BlocProvider.of<ProductsBloc>(context)
+                  .add(ProductsEvent.getProductsList(catid));
+            }));
   }
 
   Widget _buildProductCard(ProductModel product) {
