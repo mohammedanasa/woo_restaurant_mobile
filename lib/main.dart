@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:woo_restaurant/application/categories/categories_bloc.dart';
-import 'package:woo_restaurant/application/orders/orders_bloc.dart';
 import 'package:woo_restaurant/application/products/products_bloc.dart';
 import 'package:woo_restaurant/domain/core/di/injectable.dart';
-import 'package:woo_restaurant/domain/orders/model/order_model/order_model.dart';
 import 'package:woo_restaurant/presentation/products/screen_products.dart';
 
 Future<void> main() async {

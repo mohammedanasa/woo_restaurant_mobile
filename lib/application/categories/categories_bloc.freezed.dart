@@ -171,6 +171,7 @@ mixin _$CategoriesState {
   Option<Either<MainFailure, List<CategoryModel>>>
       get categoriesFailureorSuccessOption =>
           throw _privateConstructorUsedError;
+  int? get firstCatId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CategoriesStateCopyWith<CategoriesState> get copyWith =>
@@ -187,7 +188,8 @@ abstract class $CategoriesStateCopyWith<$Res> {
       {bool isLoading,
       List<CategoryModel>? categories,
       Option<Either<MainFailure, List<CategoryModel>>>
-          categoriesFailureorSuccessOption});
+          categoriesFailureorSuccessOption,
+      int? firstCatId});
 }
 
 /// @nodoc
@@ -206,6 +208,7 @@ class _$CategoriesStateCopyWithImpl<$Res, $Val extends CategoriesState>
     Object? isLoading = null,
     Object? categories = freezed,
     Object? categoriesFailureorSuccessOption = null,
+    Object? firstCatId = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -220,6 +223,10 @@ class _$CategoriesStateCopyWithImpl<$Res, $Val extends CategoriesState>
           ? _value.categoriesFailureorSuccessOption
           : categoriesFailureorSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<MainFailure, List<CategoryModel>>>,
+      firstCatId: freezed == firstCatId
+          ? _value.firstCatId
+          : firstCatId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -236,7 +243,8 @@ abstract class _$$CategoriesStateImplCopyWith<$Res>
       {bool isLoading,
       List<CategoryModel>? categories,
       Option<Either<MainFailure, List<CategoryModel>>>
-          categoriesFailureorSuccessOption});
+          categoriesFailureorSuccessOption,
+      int? firstCatId});
 }
 
 /// @nodoc
@@ -253,6 +261,7 @@ class __$$CategoriesStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? categories = freezed,
     Object? categoriesFailureorSuccessOption = null,
+    Object? firstCatId = freezed,
   }) {
     return _then(_$CategoriesStateImpl(
       isLoading: null == isLoading
@@ -267,6 +276,10 @@ class __$$CategoriesStateImplCopyWithImpl<$Res>
           ? _value.categoriesFailureorSuccessOption
           : categoriesFailureorSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<MainFailure, List<CategoryModel>>>,
+      firstCatId: freezed == firstCatId
+          ? _value.firstCatId
+          : firstCatId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -277,7 +290,8 @@ class _$CategoriesStateImpl implements _CategoriesState {
   const _$CategoriesStateImpl(
       {required this.isLoading,
       required final List<CategoryModel>? categories,
-      required this.categoriesFailureorSuccessOption})
+      required this.categoriesFailureorSuccessOption,
+      required this.firstCatId})
       : _categories = categories;
 
   @override
@@ -295,10 +309,12 @@ class _$CategoriesStateImpl implements _CategoriesState {
   @override
   final Option<Either<MainFailure, List<CategoryModel>>>
       categoriesFailureorSuccessOption;
+  @override
+  final int? firstCatId;
 
   @override
   String toString() {
-    return 'CategoriesState(isLoading: $isLoading, categories: $categories, categoriesFailureorSuccessOption: $categoriesFailureorSuccessOption)';
+    return 'CategoriesState(isLoading: $isLoading, categories: $categories, categoriesFailureorSuccessOption: $categoriesFailureorSuccessOption, firstCatId: $firstCatId)';
   }
 
   @override
@@ -313,7 +329,9 @@ class _$CategoriesStateImpl implements _CategoriesState {
             (identical(other.categoriesFailureorSuccessOption,
                     categoriesFailureorSuccessOption) ||
                 other.categoriesFailureorSuccessOption ==
-                    categoriesFailureorSuccessOption));
+                    categoriesFailureorSuccessOption) &&
+            (identical(other.firstCatId, firstCatId) ||
+                other.firstCatId == firstCatId));
   }
 
   @override
@@ -321,7 +339,8 @@ class _$CategoriesStateImpl implements _CategoriesState {
       runtimeType,
       isLoading,
       const DeepCollectionEquality().hash(_categories),
-      categoriesFailureorSuccessOption);
+      categoriesFailureorSuccessOption,
+      firstCatId);
 
   @JsonKey(ignore: true)
   @override
@@ -336,7 +355,8 @@ abstract class _CategoriesState implements CategoriesState {
       {required final bool isLoading,
       required final List<CategoryModel>? categories,
       required final Option<Either<MainFailure, List<CategoryModel>>>
-          categoriesFailureorSuccessOption}) = _$CategoriesStateImpl;
+          categoriesFailureorSuccessOption,
+      required final int? firstCatId}) = _$CategoriesStateImpl;
 
   @override
   bool get isLoading;
@@ -345,6 +365,8 @@ abstract class _CategoriesState implements CategoriesState {
   @override
   Option<Either<MainFailure, List<CategoryModel>>>
       get categoriesFailureorSuccessOption;
+  @override
+  int? get firstCatId;
   @override
   @JsonKey(ignore: true)
   _$$CategoriesStateImplCopyWith<_$CategoriesStateImpl> get copyWith =>

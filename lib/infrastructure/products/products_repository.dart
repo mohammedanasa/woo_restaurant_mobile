@@ -17,8 +17,8 @@ class ProductsRepository implements IProductsRepo {
     // TODO: implement getProductsList
     try {
       final Response response = await Dio(BaseOptions()).get(
-          ApiEndpoints.productsUrl,
-          queryParameters: {'categeory': categoryId});
+        ApiEndpoints.productsUrl + '&category=$categoryId',
+      );
       //log(response.data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         final productsList = (response.data as List).map((e) {

@@ -7,6 +7,7 @@ class CategoriesState with _$CategoriesState {
     required List<CategoryModel>? categories,
     required Option<Either<MainFailure, List<CategoryModel>>>
         categoriesFailureorSuccessOption,
+    required int? firstCatId,
   }) = _CategoriesState;
 
   factory CategoriesState.initial() {
@@ -14,6 +15,7 @@ class CategoriesState with _$CategoriesState {
       isLoading: false,
       categories: [],
       categoriesFailureorSuccessOption: None(),
+      firstCatId: 0,
     );
   }
 }

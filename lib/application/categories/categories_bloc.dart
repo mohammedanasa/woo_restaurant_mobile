@@ -25,17 +25,29 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
 
       final Either<MainFailure, List<CategoryModel>> categoriesOptions =
           await _categoriesRepo.getCategoryList();
-      log(categoriesOptions.toString());
+
+      List<CategoryModel>? categories;
+
+      categoriesOptions.fold(
+        (failure) {
+          // Handle failure, you may want to show an error message or take appropriate action
+        },
+        (categoryList) {
+          categories = categoryList;
+        },
+      );
+      int? firstCatId = categories![0].id;
+      print(categories![0].id);
       emit(categoriesOptions.fold(
         (failure) => state.copyWith(
           isLoading: false,
           categoriesFailureorSuccessOption: Some(Left(failure)),
         ),
         (success) => state.copyWith(
-          isLoading: false,
-          categories: success,
-          categoriesFailureorSuccessOption: Some(Right(success)),
-        ),
+            isLoading: false,
+            categories: success,
+            categoriesFailureorSuccessOption: Some(Right(success)),
+            firstCatId: firstCatId),
       ));
     });
   }

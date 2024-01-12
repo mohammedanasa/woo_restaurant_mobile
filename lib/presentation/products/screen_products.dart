@@ -1,13 +1,9 @@
-import 'dart:developer';
-
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:woo_restaurant/application/categories/categories_bloc.dart';
 import 'package:woo_restaurant/application/products/products_bloc.dart';
 import 'package:woo_restaurant/domain/categories/model/category_model/category_model.dart';
 import 'package:woo_restaurant/domain/products/model/product_model/product_model.dart';
-import 'package:woo_restaurant/presentation/common/widgets/widget_multi_select.dart';
 
 class ScreenProductList extends StatelessWidget {
   const ScreenProductList({super.key});
@@ -34,6 +30,8 @@ class ScreenProductList extends StatelessWidget {
                     //print(state!.products);
                     final categories = state.categories;
                     final count = state.categories!.length;
+                    BlocProvider.of<ProductsBloc>(context)
+                        .add(ProductsEvent.getProductsList(state.firstCatId));
 
                     return state.isLoading
                         ? const CircularProgressIndicator()
@@ -84,6 +82,9 @@ class ScreenProductList extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.all(5.0),
         child: ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.blue),
+            ),
             child: Text(category.name.toString()),
             onPressed: () {
               int? catid = category.id;
