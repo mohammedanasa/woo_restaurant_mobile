@@ -10,21 +10,23 @@ class ScreenProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool switchValue1 = true;
+
     BlocProvider.of<CategoriesBloc>(context)
         .add(const CategoriesEvent.getCategoryList());
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Products'),
-        elevation: 100,
+        elevation: 12,
       ),
       body: SafeArea(
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(0.0),
               child: Container(
-                height: 40,
+                height: 50,
                 child: BlocBuilder<CategoriesBloc, CategoriesState>(
                   builder: (context, state) {
                     //print(state!.products);
@@ -34,7 +36,7 @@ class ScreenProductList extends StatelessWidget {
                         .add(ProductsEvent.getProductsList(state.firstCatId));
 
                     return state.isLoading
-                        ? const CircularProgressIndicator()
+                        ? Center(child: const CircularProgressIndicator())
                         // : Text(products.length.toString());
                         : ListView.builder(
                             scrollDirection: Axis.horizontal,
@@ -82,55 +84,80 @@ class ScreenProductList extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.all(5.0),
         child: ElevatedButton(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.blue),
-            ),
             child: Text(category.name.toString()),
             onPressed: () {
               int? catid = category.id;
 
-              BlocProvider.of<ProductsBloc>(context)
-                  .add(ProductsEvent.getProductsList(catid));
+              try {
+                BlocProvider.of<ProductsBloc>(context)
+                    .add(ProductsEvent.getProductsList(catid));
+              } catch (e) {
+                print(e.toString());
+              }
             }));
   }
 
   Widget _buildProductCard(ProductModel product) {
     return Card(
-      elevation: 5,
-      margin: const EdgeInsets.all(10),
+      elevation: .5,
+      margin: const EdgeInsets.all(25),
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        // Main Row
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              product.name ?? '',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              product.description ?? '',
-              style: TextStyle(fontSize: 16, color: Colors.grey),
-            ),
-            const SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // Left Column
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Price: ${product.price ?? ''}',
+                  product.name ?? '',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Add your logic for handling product selection
-                  },
-                  child: const Text('Add to Cart'),
-                ),
+                const SizedBox(height: 16),
+                Text(
+                  'Edit',
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
+                )
               ],
+            ),
+            // Spacer between columns
+            SizedBox(width: 8),
+            // Right Column for Toggle text
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Toggle',
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildProductCard1(ProductModel product) {
+    bool switchValue2 = true;
+    if (product.status == 'published') {
+      print(product.status);
+    }
+    return SwitchListTile(
+      value: switchValue2,
+      onChanged: (value) {
+        switchValue2 = value;
+        print(switchValue2);
+      },
+      title: Text(product.name!),
+      subtitle: Text('Edit'),
     );
   }
 }
