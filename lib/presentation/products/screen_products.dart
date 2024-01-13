@@ -132,32 +132,29 @@ class ScreenProductList extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'Toggle',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                  ),
+                  BlocBuilder<ProductsBloc, ProductsState>(
+                    builder: (context, state) {
+                      late bool status = true;
+
+                      if (product.status == 'publish') {
+                        status = true;
+                      } else {
+                        status = false;
+                      }
+                      return Switch(
+                          activeColor: Colors.green,
+                          value: status,
+                          onChanged: (value) {
+                            print(value);
+                          });
+                    },
+                  )
                 ],
               ),
             ),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildProductCard1(ProductModel product) {
-    bool switchValue2 = true;
-    if (product.status == 'published') {
-      print(product.status);
-    }
-    return SwitchListTile(
-      value: switchValue2,
-      onChanged: (value) {
-        switchValue2 = value;
-        print(switchValue2);
-      },
-      title: Text(product.name!),
-      subtitle: Text('Edit'),
     );
   }
 }

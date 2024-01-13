@@ -20,18 +20,21 @@ mixin _$ProductsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialise,
     required TResult Function(int? categoryId) getProductsList,
+    required TResult Function(int? productId) getProductStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialise,
     TResult? Function(int? categoryId)? getProductsList,
+    TResult? Function(int? productId)? getProductStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialise,
     TResult Function(int? categoryId)? getProductsList,
+    TResult Function(int? productId)? getProductStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$ProductsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialise value) initialise,
     required TResult Function(_GetProductsList value) getProductsList,
+    required TResult Function(_GetProductStatus value) getProductStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialise value)? initialise,
     TResult? Function(_GetProductsList value)? getProductsList,
+    TResult? Function(_GetProductStatus value)? getProductStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialise value)? initialise,
     TResult Function(_GetProductsList value)? getProductsList,
+    TResult Function(_GetProductStatus value)? getProductStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$InitialiseImpl implements _Initialise {
   TResult when<TResult extends Object?>({
     required TResult Function() initialise,
     required TResult Function(int? categoryId) getProductsList,
+    required TResult Function(int? productId) getProductStatus,
   }) {
     return initialise();
   }
@@ -123,6 +130,7 @@ class _$InitialiseImpl implements _Initialise {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialise,
     TResult? Function(int? categoryId)? getProductsList,
+    TResult? Function(int? productId)? getProductStatus,
   }) {
     return initialise?.call();
   }
@@ -132,6 +140,7 @@ class _$InitialiseImpl implements _Initialise {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialise,
     TResult Function(int? categoryId)? getProductsList,
+    TResult Function(int? productId)? getProductStatus,
     required TResult orElse(),
   }) {
     if (initialise != null) {
@@ -145,6 +154,7 @@ class _$InitialiseImpl implements _Initialise {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialise value) initialise,
     required TResult Function(_GetProductsList value) getProductsList,
+    required TResult Function(_GetProductStatus value) getProductStatus,
   }) {
     return initialise(this);
   }
@@ -154,6 +164,7 @@ class _$InitialiseImpl implements _Initialise {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialise value)? initialise,
     TResult? Function(_GetProductsList value)? getProductsList,
+    TResult? Function(_GetProductStatus value)? getProductStatus,
   }) {
     return initialise?.call(this);
   }
@@ -163,6 +174,7 @@ class _$InitialiseImpl implements _Initialise {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialise value)? initialise,
     TResult Function(_GetProductsList value)? getProductsList,
+    TResult Function(_GetProductStatus value)? getProductStatus,
     required TResult orElse(),
   }) {
     if (initialise != null) {
@@ -244,6 +256,7 @@ class _$GetProductsListImpl implements _GetProductsList {
   TResult when<TResult extends Object?>({
     required TResult Function() initialise,
     required TResult Function(int? categoryId) getProductsList,
+    required TResult Function(int? productId) getProductStatus,
   }) {
     return getProductsList(categoryId);
   }
@@ -253,6 +266,7 @@ class _$GetProductsListImpl implements _GetProductsList {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialise,
     TResult? Function(int? categoryId)? getProductsList,
+    TResult? Function(int? productId)? getProductStatus,
   }) {
     return getProductsList?.call(categoryId);
   }
@@ -262,6 +276,7 @@ class _$GetProductsListImpl implements _GetProductsList {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialise,
     TResult Function(int? categoryId)? getProductsList,
+    TResult Function(int? productId)? getProductStatus,
     required TResult orElse(),
   }) {
     if (getProductsList != null) {
@@ -275,6 +290,7 @@ class _$GetProductsListImpl implements _GetProductsList {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialise value) initialise,
     required TResult Function(_GetProductsList value) getProductsList,
+    required TResult Function(_GetProductStatus value) getProductStatus,
   }) {
     return getProductsList(this);
   }
@@ -284,6 +300,7 @@ class _$GetProductsListImpl implements _GetProductsList {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialise value)? initialise,
     TResult? Function(_GetProductsList value)? getProductsList,
+    TResult? Function(_GetProductStatus value)? getProductStatus,
   }) {
     return getProductsList?.call(this);
   }
@@ -293,6 +310,7 @@ class _$GetProductsListImpl implements _GetProductsList {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialise value)? initialise,
     TResult Function(_GetProductsList value)? getProductsList,
+    TResult Function(_GetProductStatus value)? getProductStatus,
     required TResult orElse(),
   }) {
     if (getProductsList != null) {
@@ -308,6 +326,148 @@ abstract class _GetProductsList implements ProductsEvent {
   int? get categoryId;
   @JsonKey(ignore: true)
   _$$GetProductsListImplCopyWith<_$GetProductsListImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetProductStatusImplCopyWith<$Res> {
+  factory _$$GetProductStatusImplCopyWith(_$GetProductStatusImpl value,
+          $Res Function(_$GetProductStatusImpl) then) =
+      __$$GetProductStatusImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int? productId});
+}
+
+/// @nodoc
+class __$$GetProductStatusImplCopyWithImpl<$Res>
+    extends _$ProductsEventCopyWithImpl<$Res, _$GetProductStatusImpl>
+    implements _$$GetProductStatusImplCopyWith<$Res> {
+  __$$GetProductStatusImplCopyWithImpl(_$GetProductStatusImpl _value,
+      $Res Function(_$GetProductStatusImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? productId = freezed,
+  }) {
+    return _then(_$GetProductStatusImpl(
+      freezed == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetProductStatusImpl implements _GetProductStatus {
+  const _$GetProductStatusImpl(this.productId);
+
+  @override
+  final int? productId;
+
+  @override
+  String toString() {
+    return 'ProductsEvent.getProductStatus(productId: $productId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetProductStatusImpl &&
+            (identical(other.productId, productId) ||
+                other.productId == productId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, productId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetProductStatusImplCopyWith<_$GetProductStatusImpl> get copyWith =>
+      __$$GetProductStatusImplCopyWithImpl<_$GetProductStatusImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialise,
+    required TResult Function(int? categoryId) getProductsList,
+    required TResult Function(int? productId) getProductStatus,
+  }) {
+    return getProductStatus(productId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialise,
+    TResult? Function(int? categoryId)? getProductsList,
+    TResult? Function(int? productId)? getProductStatus,
+  }) {
+    return getProductStatus?.call(productId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialise,
+    TResult Function(int? categoryId)? getProductsList,
+    TResult Function(int? productId)? getProductStatus,
+    required TResult orElse(),
+  }) {
+    if (getProductStatus != null) {
+      return getProductStatus(productId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialise value) initialise,
+    required TResult Function(_GetProductsList value) getProductsList,
+    required TResult Function(_GetProductStatus value) getProductStatus,
+  }) {
+    return getProductStatus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialise value)? initialise,
+    TResult? Function(_GetProductsList value)? getProductsList,
+    TResult? Function(_GetProductStatus value)? getProductStatus,
+  }) {
+    return getProductStatus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialise value)? initialise,
+    TResult Function(_GetProductsList value)? getProductsList,
+    TResult Function(_GetProductStatus value)? getProductStatus,
+    required TResult orElse(),
+  }) {
+    if (getProductStatus != null) {
+      return getProductStatus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetProductStatus implements ProductsEvent {
+  const factory _GetProductStatus(final int? productId) =
+      _$GetProductStatusImpl;
+
+  int? get productId;
+  @JsonKey(ignore: true)
+  _$$GetProductStatusImplCopyWith<_$GetProductStatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
