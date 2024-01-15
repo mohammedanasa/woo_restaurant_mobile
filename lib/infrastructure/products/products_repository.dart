@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:woo_restaurant/infrastructure/api_key.dart';
 
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -27,6 +28,36 @@ class ProductsRepository implements IProductsRepo {
 
         log('PRODUCTLIST:${productsList}');
         return Right(productsList);
+      } else {
+        return const Left(MainFailure.serverFailure());
+      }
+    } on DioException catch (e) {
+      print('DIOEXCEPTION:${e.toString()}');
+      return const Left(MainFailure.clientFailure());
+    } catch (e) {
+      log(e.toString());
+      return const Left(MainFailure.clientFailure());
+    }
+  }
+
+  @override
+  Future<Either<MainFailure, bool>> updateProductStatus(
+      productId, newStatus) async {
+    late String status;
+    if (newStatus) {
+      status = 'instock';
+    } else {
+      status = 'outofstock';
+    }
+    print('PASSED STATUS:${status}');
+    Map<String, dynamic> body = {"stock_status": '${status}'};
+    try {
+      final Response response = await Dio(BaseOptions()).put(
+          ApiEndpoints.base + '/products/$productId?' + ApiEndpoints.conskp,
+          data: body);
+      //log(response.data.toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return Right(true);
       } else {
         return const Left(MainFailure.serverFailure());
       }

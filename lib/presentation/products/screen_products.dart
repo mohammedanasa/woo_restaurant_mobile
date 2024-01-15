@@ -10,14 +10,13 @@ class ScreenProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool switchValue1 = true;
-
     BlocProvider.of<CategoriesBloc>(context)
         .add(const CategoriesEvent.getCategoryList());
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Products'),
+        centerTitle: false,
         elevation: 12,
       ),
       body: SafeArea(
@@ -97,10 +96,11 @@ class ScreenProductList extends StatelessWidget {
             }));
   }
 
+  //PRODUCT CARD
   Widget _buildProductCard(ProductModel product) {
     return Card(
       elevation: .5,
-      margin: const EdgeInsets.all(25),
+      margin: EdgeInsets.all(10),
       child: Padding(
         padding: const EdgeInsets.all(16),
         // Main Row
@@ -136,7 +136,7 @@ class ScreenProductList extends StatelessWidget {
                     builder: (context, state) {
                       late bool status = true;
 
-                      if (product.status == 'publish') {
+                      if (product.stockStatus == 'instock') {
                         status = true;
                       } else {
                         status = false;
@@ -145,7 +145,11 @@ class ScreenProductList extends StatelessWidget {
                           activeColor: Colors.green,
                           value: status,
                           onChanged: (value) {
-                            print(value);
+                            print('CHANGED VALUE:${value}');
+
+                            BlocProvider.of<ProductsBloc>(context).add(
+                                ProductsEvent.updateProductStatus(
+                                    product.id, value));
                           });
                     },
                   )

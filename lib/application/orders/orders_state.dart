@@ -13,4 +13,11 @@ class OrdersState with _$OrdersState {
     return const OrdersState(
         isLoading: false, orders: [], ordersFailureorSuccessOption: None());
   }
+  factory OrdersState.loading({final List<OrderModel>? oldOrders}) {
+    return const OrdersState(
+      isLoading: true,
+      orders: [],
+      ordersFailureorSuccessOption: None(),
+    );
+  }
 }

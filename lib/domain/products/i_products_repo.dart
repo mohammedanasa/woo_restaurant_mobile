@@ -5,4 +5,6 @@ import 'package:woo_restaurant/domain/products/model/product_model/product_model
 abstract class IProductsRepo {
   Future<Either<MainFailure, List<ProductModel>>> getProductsList(
       int? categoryId);
+  Future<Either<MainFailure, bool>> updateProductStatus(
+      int? productId, bool newStatus);
 }

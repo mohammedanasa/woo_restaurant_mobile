@@ -4,7 +4,7 @@ part of 'products_bloc.dart';
 class ProductsState with _$ProductsState {
   const factory ProductsState({
     required bool isLoading,
-    required List<ProductModel>? products,
+    required List<ProductModel> products,
     required Option<Either<MainFailure, List<ProductModel>>>
         productsFailureorSuccessOption,
   }) = _ProductsState;

@@ -7,4 +7,8 @@ class ApiEndpoints {
       'https://$baseUrl/wp-json/wc/v3/products?consumer_key=$publicKey&consumer_secret=$privateKey';
   static const categoriesUrl =
       'https://$baseUrl/wp-json/wc/v3/products/categories?consumer_key=$publicKey&consumer_secret=$privateKey';
+  static const productUrl =
+      'https://$baseUrl/wp-json/wc/v3/products?consumer_key=$publicKey&consumer_secret=$privateKey';
+  static const base = 'https://$baseUrl/wp-json/wc/v3';
+  static const conskp = 'consumer_key=$publicKey&consumer_secret=$privateKey';
 }
