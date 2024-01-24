@@ -22,6 +22,8 @@ mixin _$ProductEvent {
     required TResult Function() refresh,
     required TResult Function(int? categoryId) loadMore,
     required TResult Function(int id) delete,
+    required TResult Function(int? productId, bool newStatus)
+        updateProductStatus,
     required TResult Function(FilterDataType type, dynamic data) filterProducts,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,6 +33,7 @@ mixin _$ProductEvent {
     TResult? Function()? refresh,
     TResult? Function(int? categoryId)? loadMore,
     TResult? Function(int id)? delete,
+    TResult? Function(int? productId, bool newStatus)? updateProductStatus,
     TResult? Function(FilterDataType type, dynamic data)? filterProducts,
   }) =>
       throw _privateConstructorUsedError;
@@ -40,6 +43,7 @@ mixin _$ProductEvent {
     TResult Function()? refresh,
     TResult Function(int? categoryId)? loadMore,
     TResult Function(int id)? delete,
+    TResult Function(int? productId, bool newStatus)? updateProductStatus,
     TResult Function(FilterDataType type, dynamic data)? filterProducts,
     required TResult orElse(),
   }) =>
@@ -50,6 +54,7 @@ mixin _$ProductEvent {
     required TResult Function(Refresh value) refresh,
     required TResult Function(LoadMore value) loadMore,
     required TResult Function(Delete value) delete,
+    required TResult Function(_UpdateProductStatus value) updateProductStatus,
     required TResult Function(FilterNote value) filterProducts,
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +64,7 @@ mixin _$ProductEvent {
     TResult? Function(Refresh value)? refresh,
     TResult? Function(LoadMore value)? loadMore,
     TResult? Function(Delete value)? delete,
+    TResult? Function(_UpdateProductStatus value)? updateProductStatus,
     TResult? Function(FilterNote value)? filterProducts,
   }) =>
       throw _privateConstructorUsedError;
@@ -68,6 +74,7 @@ mixin _$ProductEvent {
     TResult Function(Refresh value)? refresh,
     TResult Function(LoadMore value)? loadMore,
     TResult Function(Delete value)? delete,
+    TResult Function(_UpdateProductStatus value)? updateProductStatus,
     TResult Function(FilterNote value)? filterProducts,
     required TResult orElse(),
   }) =>
@@ -161,6 +168,8 @@ class _$StartedImpl implements Started {
     required TResult Function() refresh,
     required TResult Function(int? categoryId) loadMore,
     required TResult Function(int id) delete,
+    required TResult Function(int? productId, bool newStatus)
+        updateProductStatus,
     required TResult Function(FilterDataType type, dynamic data) filterProducts,
   }) {
     return started(categoryId);
@@ -173,6 +182,7 @@ class _$StartedImpl implements Started {
     TResult? Function()? refresh,
     TResult? Function(int? categoryId)? loadMore,
     TResult? Function(int id)? delete,
+    TResult? Function(int? productId, bool newStatus)? updateProductStatus,
     TResult? Function(FilterDataType type, dynamic data)? filterProducts,
   }) {
     return started?.call(categoryId);
@@ -185,6 +195,7 @@ class _$StartedImpl implements Started {
     TResult Function()? refresh,
     TResult Function(int? categoryId)? loadMore,
     TResult Function(int id)? delete,
+    TResult Function(int? productId, bool newStatus)? updateProductStatus,
     TResult Function(FilterDataType type, dynamic data)? filterProducts,
     required TResult orElse(),
   }) {
@@ -201,6 +212,7 @@ class _$StartedImpl implements Started {
     required TResult Function(Refresh value) refresh,
     required TResult Function(LoadMore value) loadMore,
     required TResult Function(Delete value) delete,
+    required TResult Function(_UpdateProductStatus value) updateProductStatus,
     required TResult Function(FilterNote value) filterProducts,
   }) {
     return started(this);
@@ -213,6 +225,7 @@ class _$StartedImpl implements Started {
     TResult? Function(Refresh value)? refresh,
     TResult? Function(LoadMore value)? loadMore,
     TResult? Function(Delete value)? delete,
+    TResult? Function(_UpdateProductStatus value)? updateProductStatus,
     TResult? Function(FilterNote value)? filterProducts,
   }) {
     return started?.call(this);
@@ -225,6 +238,7 @@ class _$StartedImpl implements Started {
     TResult Function(Refresh value)? refresh,
     TResult Function(LoadMore value)? loadMore,
     TResult Function(Delete value)? delete,
+    TResult Function(_UpdateProductStatus value)? updateProductStatus,
     TResult Function(FilterNote value)? filterProducts,
     required TResult orElse(),
   }) {
@@ -286,6 +300,8 @@ class _$RefreshImpl implements Refresh {
     required TResult Function() refresh,
     required TResult Function(int? categoryId) loadMore,
     required TResult Function(int id) delete,
+    required TResult Function(int? productId, bool newStatus)
+        updateProductStatus,
     required TResult Function(FilterDataType type, dynamic data) filterProducts,
   }) {
     return refresh();
@@ -298,6 +314,7 @@ class _$RefreshImpl implements Refresh {
     TResult? Function()? refresh,
     TResult? Function(int? categoryId)? loadMore,
     TResult? Function(int id)? delete,
+    TResult? Function(int? productId, bool newStatus)? updateProductStatus,
     TResult? Function(FilterDataType type, dynamic data)? filterProducts,
   }) {
     return refresh?.call();
@@ -310,6 +327,7 @@ class _$RefreshImpl implements Refresh {
     TResult Function()? refresh,
     TResult Function(int? categoryId)? loadMore,
     TResult Function(int id)? delete,
+    TResult Function(int? productId, bool newStatus)? updateProductStatus,
     TResult Function(FilterDataType type, dynamic data)? filterProducts,
     required TResult orElse(),
   }) {
@@ -326,6 +344,7 @@ class _$RefreshImpl implements Refresh {
     required TResult Function(Refresh value) refresh,
     required TResult Function(LoadMore value) loadMore,
     required TResult Function(Delete value) delete,
+    required TResult Function(_UpdateProductStatus value) updateProductStatus,
     required TResult Function(FilterNote value) filterProducts,
   }) {
     return refresh(this);
@@ -338,6 +357,7 @@ class _$RefreshImpl implements Refresh {
     TResult? Function(Refresh value)? refresh,
     TResult? Function(LoadMore value)? loadMore,
     TResult? Function(Delete value)? delete,
+    TResult? Function(_UpdateProductStatus value)? updateProductStatus,
     TResult? Function(FilterNote value)? filterProducts,
   }) {
     return refresh?.call(this);
@@ -350,6 +370,7 @@ class _$RefreshImpl implements Refresh {
     TResult Function(Refresh value)? refresh,
     TResult Function(LoadMore value)? loadMore,
     TResult Function(Delete value)? delete,
+    TResult Function(_UpdateProductStatus value)? updateProductStatus,
     TResult Function(FilterNote value)? filterProducts,
     required TResult orElse(),
   }) {
@@ -433,6 +454,8 @@ class _$LoadMoreImpl implements LoadMore {
     required TResult Function() refresh,
     required TResult Function(int? categoryId) loadMore,
     required TResult Function(int id) delete,
+    required TResult Function(int? productId, bool newStatus)
+        updateProductStatus,
     required TResult Function(FilterDataType type, dynamic data) filterProducts,
   }) {
     return loadMore(categoryId);
@@ -445,6 +468,7 @@ class _$LoadMoreImpl implements LoadMore {
     TResult? Function()? refresh,
     TResult? Function(int? categoryId)? loadMore,
     TResult? Function(int id)? delete,
+    TResult? Function(int? productId, bool newStatus)? updateProductStatus,
     TResult? Function(FilterDataType type, dynamic data)? filterProducts,
   }) {
     return loadMore?.call(categoryId);
@@ -457,6 +481,7 @@ class _$LoadMoreImpl implements LoadMore {
     TResult Function()? refresh,
     TResult Function(int? categoryId)? loadMore,
     TResult Function(int id)? delete,
+    TResult Function(int? productId, bool newStatus)? updateProductStatus,
     TResult Function(FilterDataType type, dynamic data)? filterProducts,
     required TResult orElse(),
   }) {
@@ -473,6 +498,7 @@ class _$LoadMoreImpl implements LoadMore {
     required TResult Function(Refresh value) refresh,
     required TResult Function(LoadMore value) loadMore,
     required TResult Function(Delete value) delete,
+    required TResult Function(_UpdateProductStatus value) updateProductStatus,
     required TResult Function(FilterNote value) filterProducts,
   }) {
     return loadMore(this);
@@ -485,6 +511,7 @@ class _$LoadMoreImpl implements LoadMore {
     TResult? Function(Refresh value)? refresh,
     TResult? Function(LoadMore value)? loadMore,
     TResult? Function(Delete value)? delete,
+    TResult? Function(_UpdateProductStatus value)? updateProductStatus,
     TResult? Function(FilterNote value)? filterProducts,
   }) {
     return loadMore?.call(this);
@@ -497,6 +524,7 @@ class _$LoadMoreImpl implements LoadMore {
     TResult Function(Refresh value)? refresh,
     TResult Function(LoadMore value)? loadMore,
     TResult Function(Delete value)? delete,
+    TResult Function(_UpdateProductStatus value)? updateProductStatus,
     TResult Function(FilterNote value)? filterProducts,
     required TResult orElse(),
   }) {
@@ -584,6 +612,8 @@ class _$DeleteImpl implements Delete {
     required TResult Function() refresh,
     required TResult Function(int? categoryId) loadMore,
     required TResult Function(int id) delete,
+    required TResult Function(int? productId, bool newStatus)
+        updateProductStatus,
     required TResult Function(FilterDataType type, dynamic data) filterProducts,
   }) {
     return delete(id);
@@ -596,6 +626,7 @@ class _$DeleteImpl implements Delete {
     TResult? Function()? refresh,
     TResult? Function(int? categoryId)? loadMore,
     TResult? Function(int id)? delete,
+    TResult? Function(int? productId, bool newStatus)? updateProductStatus,
     TResult? Function(FilterDataType type, dynamic data)? filterProducts,
   }) {
     return delete?.call(id);
@@ -608,6 +639,7 @@ class _$DeleteImpl implements Delete {
     TResult Function()? refresh,
     TResult Function(int? categoryId)? loadMore,
     TResult Function(int id)? delete,
+    TResult Function(int? productId, bool newStatus)? updateProductStatus,
     TResult Function(FilterDataType type, dynamic data)? filterProducts,
     required TResult orElse(),
   }) {
@@ -624,6 +656,7 @@ class _$DeleteImpl implements Delete {
     required TResult Function(Refresh value) refresh,
     required TResult Function(LoadMore value) loadMore,
     required TResult Function(Delete value) delete,
+    required TResult Function(_UpdateProductStatus value) updateProductStatus,
     required TResult Function(FilterNote value) filterProducts,
   }) {
     return delete(this);
@@ -636,6 +669,7 @@ class _$DeleteImpl implements Delete {
     TResult? Function(Refresh value)? refresh,
     TResult? Function(LoadMore value)? loadMore,
     TResult? Function(Delete value)? delete,
+    TResult? Function(_UpdateProductStatus value)? updateProductStatus,
     TResult? Function(FilterNote value)? filterProducts,
   }) {
     return delete?.call(this);
@@ -648,6 +682,7 @@ class _$DeleteImpl implements Delete {
     TResult Function(Refresh value)? refresh,
     TResult Function(LoadMore value)? loadMore,
     TResult Function(Delete value)? delete,
+    TResult Function(_UpdateProductStatus value)? updateProductStatus,
     TResult Function(FilterNote value)? filterProducts,
     required TResult orElse(),
   }) {
@@ -664,6 +699,177 @@ abstract class Delete implements ProductEvent {
   int get id;
   @JsonKey(ignore: true)
   _$$DeleteImplCopyWith<_$DeleteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateProductStatusImplCopyWith<$Res> {
+  factory _$$UpdateProductStatusImplCopyWith(_$UpdateProductStatusImpl value,
+          $Res Function(_$UpdateProductStatusImpl) then) =
+      __$$UpdateProductStatusImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int? productId, bool newStatus});
+}
+
+/// @nodoc
+class __$$UpdateProductStatusImplCopyWithImpl<$Res>
+    extends _$ProductEventCopyWithImpl<$Res, _$UpdateProductStatusImpl>
+    implements _$$UpdateProductStatusImplCopyWith<$Res> {
+  __$$UpdateProductStatusImplCopyWithImpl(_$UpdateProductStatusImpl _value,
+      $Res Function(_$UpdateProductStatusImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? productId = freezed,
+    Object? newStatus = null,
+  }) {
+    return _then(_$UpdateProductStatusImpl(
+      freezed == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      null == newStatus
+          ? _value.newStatus
+          : newStatus // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateProductStatusImpl implements _UpdateProductStatus {
+  const _$UpdateProductStatusImpl(this.productId, this.newStatus);
+
+  @override
+  final int? productId;
+  @override
+  final bool newStatus;
+
+  @override
+  String toString() {
+    return 'ProductEvent.updateProductStatus(productId: $productId, newStatus: $newStatus)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateProductStatusImpl &&
+            (identical(other.productId, productId) ||
+                other.productId == productId) &&
+            (identical(other.newStatus, newStatus) ||
+                other.newStatus == newStatus));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, productId, newStatus);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateProductStatusImplCopyWith<_$UpdateProductStatusImpl> get copyWith =>
+      __$$UpdateProductStatusImplCopyWithImpl<_$UpdateProductStatusImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? categoryId) started,
+    required TResult Function() refresh,
+    required TResult Function(int? categoryId) loadMore,
+    required TResult Function(int id) delete,
+    required TResult Function(int? productId, bool newStatus)
+        updateProductStatus,
+    required TResult Function(FilterDataType type, dynamic data) filterProducts,
+  }) {
+    return updateProductStatus(productId, newStatus);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? categoryId)? started,
+    TResult? Function()? refresh,
+    TResult? Function(int? categoryId)? loadMore,
+    TResult? Function(int id)? delete,
+    TResult? Function(int? productId, bool newStatus)? updateProductStatus,
+    TResult? Function(FilterDataType type, dynamic data)? filterProducts,
+  }) {
+    return updateProductStatus?.call(productId, newStatus);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? categoryId)? started,
+    TResult Function()? refresh,
+    TResult Function(int? categoryId)? loadMore,
+    TResult Function(int id)? delete,
+    TResult Function(int? productId, bool newStatus)? updateProductStatus,
+    TResult Function(FilterDataType type, dynamic data)? filterProducts,
+    required TResult orElse(),
+  }) {
+    if (updateProductStatus != null) {
+      return updateProductStatus(productId, newStatus);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(Refresh value) refresh,
+    required TResult Function(LoadMore value) loadMore,
+    required TResult Function(Delete value) delete,
+    required TResult Function(_UpdateProductStatus value) updateProductStatus,
+    required TResult Function(FilterNote value) filterProducts,
+  }) {
+    return updateProductStatus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Started value)? started,
+    TResult? Function(Refresh value)? refresh,
+    TResult? Function(LoadMore value)? loadMore,
+    TResult? Function(Delete value)? delete,
+    TResult? Function(_UpdateProductStatus value)? updateProductStatus,
+    TResult? Function(FilterNote value)? filterProducts,
+  }) {
+    return updateProductStatus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(Refresh value)? refresh,
+    TResult Function(LoadMore value)? loadMore,
+    TResult Function(Delete value)? delete,
+    TResult Function(_UpdateProductStatus value)? updateProductStatus,
+    TResult Function(FilterNote value)? filterProducts,
+    required TResult orElse(),
+  }) {
+    if (updateProductStatus != null) {
+      return updateProductStatus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateProductStatus implements ProductEvent {
+  const factory _UpdateProductStatus(
+      final int? productId, final bool newStatus) = _$UpdateProductStatusImpl;
+
+  int? get productId;
+  bool get newStatus;
+  @JsonKey(ignore: true)
+  _$$UpdateProductStatusImplCopyWith<_$UpdateProductStatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -744,6 +950,8 @@ class _$FilterNoteImpl implements FilterNote {
     required TResult Function() refresh,
     required TResult Function(int? categoryId) loadMore,
     required TResult Function(int id) delete,
+    required TResult Function(int? productId, bool newStatus)
+        updateProductStatus,
     required TResult Function(FilterDataType type, dynamic data) filterProducts,
   }) {
     return filterProducts(type, data);
@@ -756,6 +964,7 @@ class _$FilterNoteImpl implements FilterNote {
     TResult? Function()? refresh,
     TResult? Function(int? categoryId)? loadMore,
     TResult? Function(int id)? delete,
+    TResult? Function(int? productId, bool newStatus)? updateProductStatus,
     TResult? Function(FilterDataType type, dynamic data)? filterProducts,
   }) {
     return filterProducts?.call(type, data);
@@ -768,6 +977,7 @@ class _$FilterNoteImpl implements FilterNote {
     TResult Function()? refresh,
     TResult Function(int? categoryId)? loadMore,
     TResult Function(int id)? delete,
+    TResult Function(int? productId, bool newStatus)? updateProductStatus,
     TResult Function(FilterDataType type, dynamic data)? filterProducts,
     required TResult orElse(),
   }) {
@@ -784,6 +994,7 @@ class _$FilterNoteImpl implements FilterNote {
     required TResult Function(Refresh value) refresh,
     required TResult Function(LoadMore value) loadMore,
     required TResult Function(Delete value) delete,
+    required TResult Function(_UpdateProductStatus value) updateProductStatus,
     required TResult Function(FilterNote value) filterProducts,
   }) {
     return filterProducts(this);
@@ -796,6 +1007,7 @@ class _$FilterNoteImpl implements FilterNote {
     TResult? Function(Refresh value)? refresh,
     TResult? Function(LoadMore value)? loadMore,
     TResult? Function(Delete value)? delete,
+    TResult? Function(_UpdateProductStatus value)? updateProductStatus,
     TResult? Function(FilterNote value)? filterProducts,
   }) {
     return filterProducts?.call(this);
@@ -808,6 +1020,7 @@ class _$FilterNoteImpl implements FilterNote {
     TResult Function(Refresh value)? refresh,
     TResult Function(LoadMore value)? loadMore,
     TResult Function(Delete value)? delete,
+    TResult Function(_UpdateProductStatus value)? updateProductStatus,
     TResult Function(FilterNote value)? filterProducts,
     required TResult orElse(),
   }) {

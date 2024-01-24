@@ -27,12 +27,13 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (ctx) => getIt<ProductBloc>()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           scaffoldBackgroundColor: const Color(0xffF9F9F9),
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        home: ScreenProductList(),
+        home: const ScreenProductList(),
       ),
     );
   }

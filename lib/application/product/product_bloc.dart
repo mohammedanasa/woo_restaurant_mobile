@@ -58,6 +58,35 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         ),
       );
     });
+    on<_UpdateProductStatus>(
+      (event, emit) async {
+        int? productId = event.productId;
+        bool newStatus = event.newStatus;
+        print('STATE:${newStatus}');
+
+        try {
+          final Either<MainFailure, bool> updateStatusResult =
+              await _productsRepo.updateProductStatus(
+                  event.productId, event.newStatus);
+          emit(updateStatusResult.fold(
+            (failure) => state.copyWith(
+              status: DataStatus.error,
+            ),
+            (success) => state.copyWith(
+              products: state.products.map((product) {
+                if (product.id == event.productId) {
+                  return product.copyWith(
+                      stockStatus: event.newStatus ? 'instock' : 'outofstock');
+                }
+                return product;
+              }).toList(),
+            ),
+          ));
+        } catch (e) {
+          print(e.toString());
+        }
+      },
+    );
   }
 
   Future<void> _getFirstPage(event, emit) async {

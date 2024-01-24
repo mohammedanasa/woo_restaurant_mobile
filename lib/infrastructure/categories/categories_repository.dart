@@ -14,8 +14,8 @@ class CategoriesRepo implements ICategoriesRepo {
   Future<Either<MainFailure, List<CategoryModel>>> getCategoryList() async {
     // TODO: implement getCategoryList
     try {
-      final Response response =
-          await Dio(BaseOptions()).get(ApiEndpoints.categoriesUrl);
+      final Response response = await Dio(BaseOptions())
+          .get(ApiEndpoints.categoriesUrl + '&per_page=99');
       if (response.statusCode == 200 || response.statusCode == 201) {
         final categoriesList = (response.data as List).map((e) {
           return CategoryModel.fromJson(e);

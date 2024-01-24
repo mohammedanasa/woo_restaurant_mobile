@@ -160,7 +160,7 @@ class _ScreenProductListState extends State<ScreenProductList> {
   Widget _buildProductCard(ProductModel product) {
     return Card(
       elevation: .5,
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: Padding(
         padding: const EdgeInsets.all(16),
         // Main Row
@@ -173,10 +173,11 @@ class _ScreenProductListState extends State<ScreenProductList> {
               children: [
                 Text(
                   product.name ?? '',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 16),
-                Text(
+                const Text(
                   'Edit',
                   style: TextStyle(
                     fontSize: 12,
@@ -207,8 +208,8 @@ class _ScreenProductListState extends State<ScreenProductList> {
                           onChanged: (value) {
                             print('CHANGED VALUE:${value}');
 
-                            BlocProvider.of<ProductsBloc>(context).add(
-                                ProductsEvent.updateProductStatus(
+                            BlocProvider.of<ProductBloc>(context).add(
+                                ProductEvent.updateProductStatus(
                                     product.id, value));
                           });
                     },
