@@ -69,4 +69,32 @@ class ProductsRepository implements IProductsRepo {
       return const Left(MainFailure.clientFailure());
     }
   }
+
+  @override
+  Future<Either<MainFailure, List<ProductModel>>> getMany(
+      {required int currentPage, int pageSize = 15}) async {
+    try {
+      final Response response = await Dio(BaseOptions()).get(
+          ApiEndpoints.productsUrl,
+          queryParameters: {'page': currentPage});
+      log("Response From Dio");
+      log(response.data.toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final productsList = (response.data as List).map((e) {
+          return ProductModel.fromJson(e);
+        }).toList();
+
+        log('PRODUCTLIST:${productsList}');
+        return Right(productsList);
+      } else {
+        return const Left(MainFailure.serverFailure());
+      }
+    } on DioException catch (e) {
+      print('DIOEXCEPTION:${e.toString()}');
+      return const Left(MainFailure.clientFailure());
+    } catch (e) {
+      log(e.toString());
+      return const Left(MainFailure.clientFailure());
+    }
+  }
 }

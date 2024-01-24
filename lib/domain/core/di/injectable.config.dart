@@ -8,9 +8,10 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../../application/categories/categories_bloc.dart' as _i11;
+import '../../../application/categories/categories_bloc.dart' as _i12;
 import '../../../application/orders/orders_bloc.dart' as _i9;
-import '../../../application/products/products_bloc.dart' as _i10;
+import '../../../application/product/product_bloc.dart' as _i10;
+import '../../../application/products/products_bloc.dart' as _i11;
 import '../../../infrastructure/categories/categories_repository.dart' as _i4;
 import '../../../infrastructure/orders/orders_repository.dart' as _i6;
 import '../../../infrastructure/products/products_repository.dart' as _i8;
@@ -35,9 +36,11 @@ _i1.GetIt $initGetIt(
   gh.lazySingleton<_i5.IOrdersRepo>(() => _i6.OrdersRepository());
   gh.lazySingleton<_i7.IProductsRepo>(() => _i8.ProductsRepository());
   gh.factory<_i9.OrdersBloc>(() => _i9.OrdersBloc(get<_i5.IOrdersRepo>()));
-  gh.factory<_i10.ProductsBloc>(
-      () => _i10.ProductsBloc(get<_i7.IProductsRepo>()));
-  gh.factory<_i11.CategoriesBloc>(
-      () => _i11.CategoriesBloc(get<_i3.ICategoriesRepo>()));
+  gh.factory<_i10.ProductBloc>(
+      () => _i10.ProductBloc(get<_i7.IProductsRepo>()));
+  gh.factory<_i11.ProductsBloc>(
+      () => _i11.ProductsBloc(get<_i7.IProductsRepo>()));
+  gh.factory<_i12.CategoriesBloc>(
+      () => _i12.CategoriesBloc(get<_i3.ICategoriesRepo>()));
   return get;
 }
