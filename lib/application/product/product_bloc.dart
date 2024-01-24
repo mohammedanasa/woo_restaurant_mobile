@@ -21,7 +21,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<Started>((event, emit) async {
       if (state.status.isLoading) return;
       emit(state.copyWith(status: DataStatus.loading));
-      await _getFirstPage(emit);
+
+      await _getFirstPage(event, emit);
     });
     on<LoadMore>((event, emit) async {
       if (state.status.isLoadingMore || state.isLastPage) return;
@@ -31,6 +32,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       final Either<MainFailure, List<ProductModel>> productsOptions =
           await _productsRepo.getMany(
         currentPage: newPage,
+        categoryId: event.categoryId!,
       );
       emit(
         productsOptions.fold(
@@ -44,6 +46,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
                 products: [...state.products, ...newProducts],
                 status: DataStatus.initial,
                 page: newPage,
+                selectedCategoryId: event.categoryId,
               );
             } else {
               return state.copyWith(
@@ -57,12 +60,13 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     });
   }
 
-  Future<void> _getFirstPage(emit) async {
+  Future<void> _getFirstPage(event, emit) async {
     // if (state.status.isLoading) return;
     // emit(state.copyWith(status: DataStatus.loading));
     final Either<MainFailure, List<ProductModel>> productsOptions =
         await _productsRepo.getMany(
       currentPage: 1,
+      categoryId: event.categoryId,
     );
     emit(productsOptions.fold(
       (failure) {
@@ -73,7 +77,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           products: success,
           status: DataStatus.initial,
           isLastPage: false,
-          page: 1),
+          page: 1,
+          selectedCategoryId: event.categoryId),
     ));
   }
 }

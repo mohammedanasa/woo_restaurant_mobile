@@ -9,6 +9,7 @@ abstract class IProductsRepo {
       int? productId, bool newStatus);
   Future<Either<MainFailure, List<ProductModel>>> getMany({
     required int currentPage,
+    int? categoryId,
     int pageSize = 15,
   });
 }

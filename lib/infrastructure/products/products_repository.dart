@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:curl_logger_dio_interceptor/curl_logger_dio_interceptor.dart';
 import 'package:woo_restaurant/infrastructure/api_key.dart';
 
 import 'package:dartz/dartz.dart';
@@ -12,12 +13,15 @@ import 'package:woo_restaurant/domain/products/model/product_model/product_model
 
 @LazySingleton(as: IProductsRepo)
 class ProductsRepository implements IProductsRepo {
+  final dio = Dio();
+
+// add the interceptor
   @override
   Future<Either<MainFailure, List<ProductModel>>> getProductsList(
       int? categoryId) async {
     // TODO: implement getProductsList
     try {
-      final Response response = await Dio(BaseOptions()).get(
+      final Response response = await dio.get(
         ApiEndpoints.productsUrl + '&category=$categoryId',
       );
       //log(response.data.toString());
@@ -72,19 +76,21 @@ class ProductsRepository implements IProductsRepo {
 
   @override
   Future<Either<MainFailure, List<ProductModel>>> getMany(
-      {required int currentPage, int pageSize = 15}) async {
+      {required int currentPage, int? categoryId, int pageSize = 15}) async {
+    dio.interceptors.add(CurlLoggerDioInterceptor(printOnSuccess: true));
+    print('CATEGORYID RECIEVED:${categoryId}');
     try {
       final Response response = await Dio(BaseOptions()).get(
-          ApiEndpoints.productsUrl,
+          ApiEndpoints.productsUrl + '&category=$categoryId',
           queryParameters: {'page': currentPage});
-      log("Response From Dio");
-      log(response.data.toString());
+      print("Response From Dio");
+      print(response.statusCode);
       if (response.statusCode == 200 || response.statusCode == 201) {
         final productsList = (response.data as List).map((e) {
           return ProductModel.fromJson(e);
         }).toList();
 
-        log('PRODUCTLIST:${productsList}');
+        //print('PRODUCTLIST:${productsList}');
         return Right(productsList);
       } else {
         return const Left(MainFailure.serverFailure());

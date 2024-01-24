@@ -8,15 +8,16 @@ class ProductState with _$ProductState {
     required int page,
     required bool isLastPage,
     required DataStatus status,
+    int? selectedCategoryId,
   }) = _ProductState;
 
   factory ProductState.initial() {
     return const ProductState(
-      products: [],
-      page: 1,
-      isLastPage: false,
-      status: DataStatus.initial,
-    );
+        products: [],
+        page: 1,
+        isLastPage: false,
+        status: DataStatus.initial,
+        selectedCategoryId: null);
   }
 
   bool get hasProducts => products.isNotEmpty;

@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: const Color(0xffF9F9F9),
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        home: const HomeScreen(),
+        home: ScreenProductList(),
       ),
     );
   }

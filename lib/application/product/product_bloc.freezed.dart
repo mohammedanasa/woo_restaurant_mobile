@@ -18,27 +18,27 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProductEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(int? categoryId) started,
     required TResult Function() refresh,
-    required TResult Function() loadMore,
+    required TResult Function(int? categoryId) loadMore,
     required TResult Function(int id) delete,
     required TResult Function(FilterDataType type, dynamic data) filterProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(int? categoryId)? started,
     TResult? Function()? refresh,
-    TResult? Function()? loadMore,
+    TResult? Function(int? categoryId)? loadMore,
     TResult? Function(int id)? delete,
     TResult? Function(FilterDataType type, dynamic data)? filterProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(int? categoryId)? started,
     TResult Function()? refresh,
-    TResult Function()? loadMore,
+    TResult Function(int? categoryId)? loadMore,
     TResult Function(int id)? delete,
     TResult Function(FilterDataType type, dynamic data)? filterProducts,
     required TResult orElse(),
@@ -97,6 +97,8 @@ abstract class _$$StartedImplCopyWith<$Res> {
   factory _$$StartedImplCopyWith(
           _$StartedImpl value, $Res Function(_$StartedImpl) then) =
       __$$StartedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int? categoryId});
 }
 
 /// @nodoc
@@ -106,63 +108,88 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? categoryId = freezed,
+  }) {
+    return _then(_$StartedImpl(
+      freezed == categoryId
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$StartedImpl implements Started {
-  const _$StartedImpl();
+  const _$StartedImpl(this.categoryId);
+
+  @override
+  final int? categoryId;
 
   @override
   String toString() {
-    return 'ProductEvent.started()';
+    return 'ProductEvent.started(categoryId: $categoryId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$StartedImpl &&
+            (identical(other.categoryId, categoryId) ||
+                other.categoryId == categoryId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, categoryId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      __$$StartedImplCopyWithImpl<_$StartedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(int? categoryId) started,
     required TResult Function() refresh,
-    required TResult Function() loadMore,
+    required TResult Function(int? categoryId) loadMore,
     required TResult Function(int id) delete,
     required TResult Function(FilterDataType type, dynamic data) filterProducts,
   }) {
-    return started();
+    return started(categoryId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(int? categoryId)? started,
     TResult? Function()? refresh,
-    TResult? Function()? loadMore,
+    TResult? Function(int? categoryId)? loadMore,
     TResult? Function(int id)? delete,
     TResult? Function(FilterDataType type, dynamic data)? filterProducts,
   }) {
-    return started?.call();
+    return started?.call(categoryId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(int? categoryId)? started,
     TResult Function()? refresh,
-    TResult Function()? loadMore,
+    TResult Function(int? categoryId)? loadMore,
     TResult Function(int id)? delete,
     TResult Function(FilterDataType type, dynamic data)? filterProducts,
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started();
+      return started(categoryId);
     }
     return orElse();
   }
@@ -209,7 +236,12 @@ class _$StartedImpl implements Started {
 }
 
 abstract class Started implements ProductEvent {
-  const factory Started() = _$StartedImpl;
+  const factory Started(final int? categoryId) = _$StartedImpl;
+
+  int? get categoryId;
+  @JsonKey(ignore: true)
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -250,9 +282,9 @@ class _$RefreshImpl implements Refresh {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(int? categoryId) started,
     required TResult Function() refresh,
-    required TResult Function() loadMore,
+    required TResult Function(int? categoryId) loadMore,
     required TResult Function(int id) delete,
     required TResult Function(FilterDataType type, dynamic data) filterProducts,
   }) {
@@ -262,9 +294,9 @@ class _$RefreshImpl implements Refresh {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(int? categoryId)? started,
     TResult? Function()? refresh,
-    TResult? Function()? loadMore,
+    TResult? Function(int? categoryId)? loadMore,
     TResult? Function(int id)? delete,
     TResult? Function(FilterDataType type, dynamic data)? filterProducts,
   }) {
@@ -274,9 +306,9 @@ class _$RefreshImpl implements Refresh {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(int? categoryId)? started,
     TResult Function()? refresh,
-    TResult Function()? loadMore,
+    TResult Function(int? categoryId)? loadMore,
     TResult Function(int id)? delete,
     TResult Function(FilterDataType type, dynamic data)? filterProducts,
     required TResult orElse(),
@@ -337,6 +369,8 @@ abstract class _$$LoadMoreImplCopyWith<$Res> {
   factory _$$LoadMoreImplCopyWith(
           _$LoadMoreImpl value, $Res Function(_$LoadMoreImpl) then) =
       __$$LoadMoreImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int? categoryId});
 }
 
 /// @nodoc
@@ -346,63 +380,88 @@ class __$$LoadMoreImplCopyWithImpl<$Res>
   __$$LoadMoreImplCopyWithImpl(
       _$LoadMoreImpl _value, $Res Function(_$LoadMoreImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? categoryId = freezed,
+  }) {
+    return _then(_$LoadMoreImpl(
+      freezed == categoryId
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$LoadMoreImpl implements LoadMore {
-  const _$LoadMoreImpl();
+  const _$LoadMoreImpl(this.categoryId);
+
+  @override
+  final int? categoryId;
 
   @override
   String toString() {
-    return 'ProductEvent.loadMore()';
+    return 'ProductEvent.loadMore(categoryId: $categoryId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadMoreImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$LoadMoreImpl &&
+            (identical(other.categoryId, categoryId) ||
+                other.categoryId == categoryId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, categoryId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadMoreImplCopyWith<_$LoadMoreImpl> get copyWith =>
+      __$$LoadMoreImplCopyWithImpl<_$LoadMoreImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(int? categoryId) started,
     required TResult Function() refresh,
-    required TResult Function() loadMore,
+    required TResult Function(int? categoryId) loadMore,
     required TResult Function(int id) delete,
     required TResult Function(FilterDataType type, dynamic data) filterProducts,
   }) {
-    return loadMore();
+    return loadMore(categoryId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(int? categoryId)? started,
     TResult? Function()? refresh,
-    TResult? Function()? loadMore,
+    TResult? Function(int? categoryId)? loadMore,
     TResult? Function(int id)? delete,
     TResult? Function(FilterDataType type, dynamic data)? filterProducts,
   }) {
-    return loadMore?.call();
+    return loadMore?.call(categoryId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(int? categoryId)? started,
     TResult Function()? refresh,
-    TResult Function()? loadMore,
+    TResult Function(int? categoryId)? loadMore,
     TResult Function(int id)? delete,
     TResult Function(FilterDataType type, dynamic data)? filterProducts,
     required TResult orElse(),
   }) {
     if (loadMore != null) {
-      return loadMore();
+      return loadMore(categoryId);
     }
     return orElse();
   }
@@ -449,7 +508,12 @@ class _$LoadMoreImpl implements LoadMore {
 }
 
 abstract class LoadMore implements ProductEvent {
-  const factory LoadMore() = _$LoadMoreImpl;
+  const factory LoadMore(final int? categoryId) = _$LoadMoreImpl;
+
+  int? get categoryId;
+  @JsonKey(ignore: true)
+  _$$LoadMoreImplCopyWith<_$LoadMoreImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -516,9 +580,9 @@ class _$DeleteImpl implements Delete {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(int? categoryId) started,
     required TResult Function() refresh,
-    required TResult Function() loadMore,
+    required TResult Function(int? categoryId) loadMore,
     required TResult Function(int id) delete,
     required TResult Function(FilterDataType type, dynamic data) filterProducts,
   }) {
@@ -528,9 +592,9 @@ class _$DeleteImpl implements Delete {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(int? categoryId)? started,
     TResult? Function()? refresh,
-    TResult? Function()? loadMore,
+    TResult? Function(int? categoryId)? loadMore,
     TResult? Function(int id)? delete,
     TResult? Function(FilterDataType type, dynamic data)? filterProducts,
   }) {
@@ -540,9 +604,9 @@ class _$DeleteImpl implements Delete {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(int? categoryId)? started,
     TResult Function()? refresh,
-    TResult Function()? loadMore,
+    TResult Function(int? categoryId)? loadMore,
     TResult Function(int id)? delete,
     TResult Function(FilterDataType type, dynamic data)? filterProducts,
     required TResult orElse(),
@@ -676,9 +740,9 @@ class _$FilterNoteImpl implements FilterNote {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(int? categoryId) started,
     required TResult Function() refresh,
-    required TResult Function() loadMore,
+    required TResult Function(int? categoryId) loadMore,
     required TResult Function(int id) delete,
     required TResult Function(FilterDataType type, dynamic data) filterProducts,
   }) {
@@ -688,9 +752,9 @@ class _$FilterNoteImpl implements FilterNote {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(int? categoryId)? started,
     TResult? Function()? refresh,
-    TResult? Function()? loadMore,
+    TResult? Function(int? categoryId)? loadMore,
     TResult? Function(int id)? delete,
     TResult? Function(FilterDataType type, dynamic data)? filterProducts,
   }) {
@@ -700,9 +764,9 @@ class _$FilterNoteImpl implements FilterNote {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(int? categoryId)? started,
     TResult Function()? refresh,
-    TResult Function()? loadMore,
+    TResult Function(int? categoryId)? loadMore,
     TResult Function(int id)? delete,
     TResult Function(FilterDataType type, dynamic data)? filterProducts,
     required TResult orElse(),
@@ -771,6 +835,7 @@ mixin _$ProductState {
   int get page => throw _privateConstructorUsedError;
   bool get isLastPage => throw _privateConstructorUsedError;
   DataStatus get status => throw _privateConstructorUsedError;
+  int? get selectedCategoryId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductStateCopyWith<ProductState> get copyWith =>
@@ -787,7 +852,8 @@ abstract class $ProductStateCopyWith<$Res> {
       {List<ProductModel> products,
       int page,
       bool isLastPage,
-      DataStatus status});
+      DataStatus status,
+      int? selectedCategoryId});
 }
 
 /// @nodoc
@@ -807,6 +873,7 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
     Object? page = null,
     Object? isLastPage = null,
     Object? status = null,
+    Object? selectedCategoryId = freezed,
   }) {
     return _then(_value.copyWith(
       products: null == products
@@ -825,6 +892,10 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as DataStatus,
+      selectedCategoryId: freezed == selectedCategoryId
+          ? _value.selectedCategoryId
+          : selectedCategoryId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -841,7 +912,8 @@ abstract class _$$ProductStateImplCopyWith<$Res>
       {List<ProductModel> products,
       int page,
       bool isLastPage,
-      DataStatus status});
+      DataStatus status,
+      int? selectedCategoryId});
 }
 
 /// @nodoc
@@ -859,6 +931,7 @@ class __$$ProductStateImplCopyWithImpl<$Res>
     Object? page = null,
     Object? isLastPage = null,
     Object? status = null,
+    Object? selectedCategoryId = freezed,
   }) {
     return _then(_$ProductStateImpl(
       products: null == products
@@ -877,6 +950,10 @@ class __$$ProductStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as DataStatus,
+      selectedCategoryId: freezed == selectedCategoryId
+          ? _value.selectedCategoryId
+          : selectedCategoryId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -888,7 +965,8 @@ class _$ProductStateImpl extends _ProductState {
       {required final List<ProductModel> products,
       required this.page,
       required this.isLastPage,
-      required this.status})
+      required this.status,
+      this.selectedCategoryId})
       : _products = products,
         super._();
 
@@ -906,10 +984,12 @@ class _$ProductStateImpl extends _ProductState {
   final bool isLastPage;
   @override
   final DataStatus status;
+  @override
+  final int? selectedCategoryId;
 
   @override
   String toString() {
-    return 'ProductState(products: $products, page: $page, isLastPage: $isLastPage, status: $status)';
+    return 'ProductState(products: $products, page: $page, isLastPage: $isLastPage, status: $status, selectedCategoryId: $selectedCategoryId)';
   }
 
   @override
@@ -921,12 +1001,19 @@ class _$ProductStateImpl extends _ProductState {
             (identical(other.page, page) || other.page == page) &&
             (identical(other.isLastPage, isLastPage) ||
                 other.isLastPage == isLastPage) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.selectedCategoryId, selectedCategoryId) ||
+                other.selectedCategoryId == selectedCategoryId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_products), page, isLastPage, status);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_products),
+      page,
+      isLastPage,
+      status,
+      selectedCategoryId);
 
   @JsonKey(ignore: true)
   @override
@@ -940,7 +1027,8 @@ abstract class _ProductState extends ProductState {
       {required final List<ProductModel> products,
       required final int page,
       required final bool isLastPage,
-      required final DataStatus status}) = _$ProductStateImpl;
+      required final DataStatus status,
+      final int? selectedCategoryId}) = _$ProductStateImpl;
   const _ProductState._() : super._();
 
   @override
@@ -951,6 +1039,8 @@ abstract class _ProductState extends ProductState {
   bool get isLastPage;
   @override
   DataStatus get status;
+  @override
+  int? get selectedCategoryId;
   @override
   @JsonKey(ignore: true)
   _$$ProductStateImplCopyWith<_$ProductStateImpl> get copyWith =>
